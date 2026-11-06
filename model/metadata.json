@@ -1,0 +1,1 @@
+{"tfjsVersion":"1.7.4","tmVersion":"2.4.12","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2026-03-28T06:07:47.654Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["plastic","paper","metal","glass","nothing","Ewaste","cloth"],"imageSize":224}
