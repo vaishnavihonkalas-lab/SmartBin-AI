@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Smart Bin AI classifies waste images using a TensorFlow.js image model." />
+    <title>Smart Bin AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Smart Bin AI home">
+        <span class="brand-mark">♻</span>
+        <span>Smart Bin <b>AI</b></span>
+      </a>
+      <span class="model-pill"><span id="status-dot" class="status-dot"></span><span id="model-status">Loading model…</span></span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">INTELLIGENT WASTE CLASSIFICATION</p>
+          <h1>Make every bin a little smarter.</h1>
+          <p class="hero-text">Upload a waste image and let the trained image model suggest its category in seconds.</p>
+          <div class="hero-tags"><span>TensorFlow.js</span><span>MobileNetV2</span><span>Computer vision</span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><span class="leaf leaf-one">✦</span><span class="bin-icon">▥</span><span class="leaf leaf-two">✦</span></div>
+      </section>
+
+      <section class="workspace" aria-label="Waste classifier">
+        <div class="card upload-card">
+          <div class="card-heading"><div><p class="eyebrow">STEP 01</p><h2>Choose an image</h2></div><span class="step-number">01</span></div>
+          <label class="drop-zone" id="drop-zone" for="image-input">
+            <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp" />
+            <span class="upload-icon">↑</span>
+            <strong>Drop an image here</strong>
+            <span>or click to browse · JPG, PNG or WEBP</span>
+          </label>
+          <div class="preview-wrap hidden" id="preview-wrap">
+            <img id="preview" alt="Selected waste image preview" />
+            <button class="text-button" id="clear-button" type="button">Choose another image</button>
+          </div>
+          <button class="primary-button" id="predict-button" type="button" disabled>Classify image <span>→</span></button>
+          <p class="helper" id="input-message">The model is loading. You can choose an image once it is ready.</p>
+        </div>
+
+        <div class="card result-card">
+          <div class="card-heading"><div><p class="eyebrow">STEP 02</p><h2>Prediction</h2></div><span class="step-number">02</span></div>
+          <div class="empty-state" id="empty-state"><div class="empty-icon">✧</div><p>Your prediction will appear here.</p><span>Upload an image to get started.</span></div>
+          <div class="result-content hidden" id="result-content">
+            <div class="prediction-main"><span class="prediction-label" id="prediction-label">—</span><span class="confidence" id="confidence">—</span></div>
+            <p class="result-note" id="result-note"></p>
+            <div class="score-heading"><span>All class scores</span><span>Confidence</span></div>
+            <div class="score-list" id="score-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-grid">
+        <article class="info-card"><span class="info-number">01</span><h3>Prepare</h3><p>The image is resized to 224 × 224 pixels and normalized before inference.</p></article>
+        <article class="info-card"><span class="info-number">02</span><h3>Predict</h3><p>A MobileNetV2-based model compares visual patterns with its learned classes.</p></article>
+        <article class="info-card"><span class="info-number">03</span><h3>Act responsibly</h3><p>Use the result as guidance. Always confirm ambiguous items before disposal.</p></article>
+      </section>
+
+      <section class="limitations"><strong>Prototype note:</strong> This is an image-classification demo. It does not control a physical bin, identify hazardous material, or guarantee disposal safety.</section>
+    </main>
+
+    <footer><span>Smart Bin AI</span><span>Built for practical waste segregation</span></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
